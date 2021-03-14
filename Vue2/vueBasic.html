@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{}}中是一个表达式,绑定文本 -->
+        <h1>{{ message }}</h1>
+        <!-- 绑定属性：v-bind -->
+        <img v-bind:src="url" alt="">
+        <!-- v-bind:可直接简写为“:”(推荐简写) -->
+        <img :src="url" alt="">
+        <br>
+        <!-- 绑定事件(事件修饰符):v-on -->
+        <button v-on:click="changeImg2">改变图片</button>
+        <!-- v-on:可直接简写为"@"(推荐简写) -->
+        <button @click="changeImg3">改变图片</button>
+        <br>
+        <button @click="add">ADD</button>
+        {{ num }}
+        <button @click="sub">SUB</button>
+    </div>
+
+    <script crossorigin="anonymous" integrity="sha512-h3aCJRk6tEHugDYUidF7GqixhzgeXSiSdq5U+5oLIJtIncSQq6eev48qqYfuTdrsH5Q1eO4IAmyJGDwzRaWNNQ==" src="https://lib.baomitu.com/vue/2.6.12/vue.common.dev.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                message:"hello world",
+                url:"imgs/img1.jpeg",
+                num:0
+            },
+            methods:{
+                changeImg2(){
+                    this.url="imgs/img2.jpg"
+                },
+                changeImg3(){
+                    this.url="imgs/img3.jpeg"
+                },
+                add(){
+                    this.num++;
+                },
+                sub(){
+                    if(this.num>0)
+                        this.num--;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

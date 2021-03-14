@@ -1,0 +1,83 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+body {
+    height: auto;
+}
+
+/*图片start*/
+#wrap {
+    margin: 100px auto;
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+ul li {
+    width: 400px;
+    height: 300px;
+}
+/*图片 end*/
+
+/*数字start*/
+#list {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#list li {
+    float: left;
+    background-color: #f90;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    margin-right: 5px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#list .on {
+    background: #088bcf;
+    color: #fff;
+}
+/*数字end*/
+
+/*两侧按钮*/
+a {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    top: 50%;
+    margin-top: -15px;
+    background: rgba(0, 0, 0, .2);
+    text-decoration: none;
+    color: white;
+    display: none;
+}
+
+.left {
+    left: 0;
+    /* border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; */
+}
+
+.right {
+    right: 0;
+    text-align: right;
+    /*border-top-left-radius: 10px;
+     border-bottom-left-radius: 10px;*/
+}
+
+#wrap:hover a {
+    display: block;
+}
