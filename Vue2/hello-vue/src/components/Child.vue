@@ -3,6 +3,7 @@
         I'm child
         <!-- 父子组件传递4：最后在子组件的html中绑定父组件传来的属性名(在props中的) -->
         <h1>{{msg}}</h1>
+        <button>{{text}}</button>
         <!-- 子父组件传递6：最后在html中写触发子组件向父组件传递数据的事件 -->
         <button @click="sendData">传递数据</button>
     </div>
@@ -11,7 +12,7 @@
 <script>
 export default {
     // 父子组件传递3：子组件中写props,props是"属性的属性"里面是一个字符串数组，字符串中写父组件传过来的属性名
-    props:["msg"],
+    props:["msg","text"],
     data(){
         return {
             // 子父组件传递4：子组件在export default中的data中声明需要传递的数据
