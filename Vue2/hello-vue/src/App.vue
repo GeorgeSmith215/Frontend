@@ -76,23 +76,25 @@
 // js代码
 
 // 组件注册1：在js中用import XXX from "组件地址";
-import Header from './components/Header'
+import Header from './components/Header';
 // 组件间传递数据0：先注册组件
-import Child from './components/Child'
-import Brother from './components/Brother'
-import Sister from './components/Sister'
+import Child from './components/Child';
+import Brother from './components/Brother';
+import Sister from './components/Sister';
 
 // 购物车：结合3种传值的例子
-import Cart from './components/Cart'
-import Control from './components/Control'
+import Cart from './components/Cart';
+import Control from './components/Control';
 
-import WatchAndComputed from './components/WatchAndComputed'
-import ComputedCart from './components/ComputedCart'
-import LifeCircle from './components/LifeCircle'
-import SlotDemo from './components/SlotDemo'
-import GetDOM from './components/GetDOM'
-import FilterDemo from './components/FilterDemo'
-import FormDemo from './components/FormDemo'
+import WatchAndComputed from './components/WatchAndComputed';
+import ComputedCart from './components/ComputedCart';
+import LifeCircle from './components/LifeCircle';
+import SlotDemo from './components/SlotDemo';
+import GetDOM from './components/GetDOM';
+import FilterDemo from './components/FilterDemo';
+import FormDemo from './components/FormDemo';
+
+import axios from "axios";
 
 export default {
   // 组件注册2：之后在export default中写components:{组件名:import的组件}，

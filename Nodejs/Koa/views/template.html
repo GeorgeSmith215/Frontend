@@ -1,0 +1,20 @@
+<!-- extends引号后写需要继承的文件路径(根目录下) -->
+{% extends "./views/layout.html" %}
+<!-- % block content %与% endblock %里的内容会填充进继承文件中声明了% block content %与% endblock %的地方 -->
+{% block content %}
+    <h1>模板语法</h1>
+    <p>循环语句：</p>
+    <ul>
+        {% for student in studentList %}
+        <li>{{student}}</li>
+        {% endfor %}
+    </ul>
+    <p>分支语句：</p>
+    {% if isLogin %}
+    <p>欢迎{{username}}</p>
+    {% else %}
+    <p>Please Login</p>
+    {% endif %}
+    <!-- 通过include可以把一些公共模块单独写出，哪个地方用就可以单独引用 -->
+    {% include "./views/footer.html" %}
+{% endblock %}
