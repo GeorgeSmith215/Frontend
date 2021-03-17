@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="get">查询数据</button>
+    <button class="post">添加数据</button>
+    <button class="put">修改数据</button>
+    <button class="delete">删除数据</button>
+    <!-- 因为我们要将Axios引入到前端的页面，所以需要将axios.js文件拷贝到静态文件目录。 -->
+    <script src="/js/axios.min.js"></script>
+
+    <script>
+        // axios中的get,put,post,delete方法的返回值都是一个Promise对象
+        // axios.get("/fruits").then(res => {
+        //     console.log(res);
+        // })
+        document.querySelector(".get").onclick = ()=>{
+            axios.get("/fruits").then( res=>{
+                console.log(res.data);
+            })
+        }
+        document.querySelector(".post").onclick = ()=>{
+            // axios的post需要第二参数作为post传递的对象
+            axios.post("/fruits",{
+                fruit:"strawberry"
+            }).then( res=>{
+                console.log(res.data);
+            })
+        }
+        document.querySelector(".put").onclick = ()=>{
+            // 后台是写/fruits/:id,前台直接传id值
+            axios.put("/fruits/1",{
+                fruit:"watermelon"
+            }).then( res=>{
+                console.log(res.data);
+            })
+        }
+        document.querySelector(".delete").onclick = ()=>{
+            // 后台是写/fruits/:id,前台直接传id值
+            axios.delete("/fruits/1").then( res=>{
+                console.log(res.data);
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Home</h1>
+    <button id="ajax">ajax获取数据</button>
+    <button id="myAjax1">封装ajax获取数据(return失败)</button>
+    <button id="myAjax2">封装ajax获取数据(回调函数)</button>
+    <button id="myAjax3">封装ajax获取数据(promise)</button>
+
+    <script>
+        // 一般都是用封装好的ajax库，很少这么写，了解概念即可
+        document.querySelector("#ajax").onclick = function(){
+            // 创建XHR对象
+            let XHR = new XMLHttpRequest();
+            // 规定请求类型
+            XHR.open("get","/data");
+            // 发送请求
+            XHR.send();
+            // 监听readyStatus事件
+            XHR.onreadystatechange = function(){
+                // reayStatus = 0: 请求未初始化、1: 服务器连接已建立、2: 请求已接收、3: 请求处理中、4: 请求已完成，且响应已就绪
+                // status=200为响应成功。responseText为响应内容
+                if(XHR.readyState === 4 && XHR.status === 200){
+                    alert(XHR.responseText);
+                }
+            }
+        }
+
+
+
+        // 错误用法：通过return让异步获取的数据作为返回值返回
+        document.querySelector("#myAjax1").onclick = function(){
+            let res = myAjax1("get","/data");
+            alert(res);
+        }
+        // 自己封装Ajax方法
+        function myAjax1(method,url){
+            let XHR = new XMLHttpRequest();
+            XHR.open(method,url);
+            XHR.send();
+            let result = "";
+            XHR.onreadystatechange = function(){
+                if(XHR.readyState === 4 && XHR.status === 200){
+                    // 虽然这个地方可以拿到响应的数据，但不能通过return让异步获取的数据作为返回值返回
+                    result = XHR.responseText;
+                }
+            }
+            // 一个异步的操作，代码的执行会受到网络的影响，而return是一个同步的写法，不能获取异步数据(会return空数据)
+            return result;
+        }
+
+
+
+        // 处理异步问题方案一：回调函数
+        // 一个程序若大量使用回调函数会变得很难维护，所以一般不建议使用回调函数处理异步问题
+        document.querySelector("#myAjax2").onclick = function(){
+            // 第三个参数是回调函数，函数中的res形参对应函数传出来的实参（响应内容）
+            myAjax2("get","/data",function(res){
+                alert(res);
+            });
+        }
+        // 自己封装Ajax方法,next为回调函数
+        function myAjax2(method,url,next){
+            let XHR = new XMLHttpRequest();
+            XHR.open(method,url);
+            XHR.send();
+            let result = "";
+            XHR.onreadystatechange = function(){
+                if(XHR.readyState === 4 && XHR.status === 200){
+                    // 通过next回调函数把数据传出来
+                    next(XHR.responseText);
+                }
+            }
+        }
+
+
+
+
+        // 处理异步问题方案二：使用promise对象
+        document.querySelector("#myAjax3").onclick = function(){
+            // myAjax3返回的是一个promise对象，有resolve方法，这个方法传进来的值可以通过.then来获取
+            myAjax3("get","/data").then( success =>{
+                alert(success);
+            });
+        }
+        // 自己封装Ajax方法,
+        function myAjax3(method,url){
+            // return一个new promise对象，promise对象里有一个function，参数为resolve，reject,
+            // 这两个参数用来标记 promise的状态的，这两个参数是两个方法，并且这两个参数可以随意命名,
+            // 可以通过resolve,reject传递数据，resolve里的参数就是获取数据成功时传入then的数据，
+            // reject中就是获取数据失败时传入的数据。function还可写成箭头函数形式：(resolve,reject)=>{}
+            return new Promise(function(resolve,reject){
+                let XHR = new XMLHttpRequest();
+                XHR.open(method,url);
+                XHR.send();
+                XHR.onreadystatechange = function(){
+                    if(XHR.readyState === 4 && XHR.status === 200){
+                        // 通过resolve把数据传出来
+                        resolve(XHR.responseText);
+                    }
+                }
+            })
+        }
+        // 但真正开发时都是用第三方开发模块的，很少自己写
+    </script>
+</body>
+</html>

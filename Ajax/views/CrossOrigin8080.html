@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CrossOrigin8080</h1>
+    <button class="get">查询数据</button>
+    <button class="post">添加数据</button>
+    <button class="put">修改数据</button>
+    <button class="delete">删除数据</button>
+
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+
+    <script>
+        //  jsonp不属于ajax，但jquery把jsonp封装在了ajax里
+        // jsonp是前端需要发送类型为jsonp的一个请求，服务器端也需要做相应的配置，才能正常交互数据
+        $.ajax({
+            url:"http://localhost:3000/fruits",
+            dataType:"jsonp",
+            success:(data)=>{
+                console.log(data);
+            },
+            error:(XMLHttpRequest, textStatus, errorThrown) => {
+            //这个error函数调试时非常有用，如果解析不正确，将会弹出错误框
+            console.log(XMLHttpRequest.responseText); 
+            console.log(XMLHttpRequest.status);
+            console.log(XMLHttpRequest.readyState);
+            console.log(textStatus); // parser error;
+        }
+    });
+    </script>
+
+    <script>
+        // axios中的get,put,post,delete方法的返回值都是一个Promise对象
+        // axios.get("/fruits").then(res => {
+        //     console.log(res);
+        // })
+        document.querySelector(".get").onclick = ()=>{
+            axios.get("http://localhost:3000/fruits").then( res=>{
+                console.log(res.data);
+            })
+        }
+        document.querySelector(".post").onclick = ()=>{
+            // axios的post需要第二参数作为post传递的对象
+            axios.post("http://localhost:3000/fruits",{
+                fruit:"strawberry"
+            }).then( res=>{
+                console.log(res.data);
+            })
+        }
+        document.querySelector(".put").onclick = ()=>{
+            // 后台是写/fruits/:id,前台直接传id值
+            axios.put("http://localhost:3000/fruits/1",{
+                fruit:"watermelon"
+            }).then( res=>{
+                console.log(res.data);
+            })
+        }
+        document.querySelector(".delete").onclick = ()=>{
+            // 后台是写/fruits/:id,前台直接传id值
+            axios.delete("http://localhost:3000/fruits/1").then( res=>{
+                console.log(res.data);
+            })
+        }
+    </script>
+</body>
+</html>

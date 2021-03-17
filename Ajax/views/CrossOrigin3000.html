@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CrossOrigin3000</h1>
+
+    <!-- 只要引入8080端口的js文件就可以读取其中内容 -->
+    <!-- jsonp原理：script标签可以通过src属性获取到跨域的js文件。 -->
+    <!-- jsonp和ajax没有什么关系，完全是两个东西，ajax是基于XMLHttpRequest对象的，而jsonp是基于script标签的获取外部js的原理 -->
+    <!-- 并且因为jsonp的原理使得jsonp只能有Get请求 -->
+    <script src="http://127.0.0.1:8080/js/jsonp.js"></script>
+    <script>
+        console.log(data8080);
+    </script>
+</body>
+</html>
