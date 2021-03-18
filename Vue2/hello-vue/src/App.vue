@@ -69,6 +69,8 @@
     <!-- 表单Demo -->
     <FormDemo></FormDemo>
 
+    <DataInteraction></DataInteraction>
+
   </div>
 </template>
 
@@ -93,14 +95,14 @@ import SlotDemo from './components/SlotDemo';
 import GetDOM from './components/GetDOM';
 import FilterDemo from './components/FilterDemo';
 import FormDemo from './components/FormDemo';
+import DataInteraction from './components/DataInteraction'
 
-import axios from "axios";
 
 export default {
   // 组件注册2：之后在export default中写components:{组件名:import的组件}，
   // 也可以写为components:{importt的组件:importt的组件}，
   // 即可以简写为components:{importt的组件}(ES6中属性名属性值相同时可以简写)
-  components:{Header,Child,Cart,Brother,Sister,Control,WatchAndComputed,ComputedCart,LifeCircle,SlotDemo,GetDOM,FilterDemo,FormDemo},
+  components:{Header,Child,Cart,Brother,Sister,Control,WatchAndComputed,ComputedCart,LifeCircle,SlotDemo,GetDOM,FilterDemo,FormDemo,DataInteraction},
   data(){
     return{
       isLogin:false,
