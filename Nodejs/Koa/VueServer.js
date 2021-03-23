@@ -90,6 +90,6 @@ router.delete("/students/:id",ctx => {
     ctx.body = studentList;
 })
 
-app.listen(3000,()=>{
+app.listen(7001,()=>{
     console.log("server running")
 })
