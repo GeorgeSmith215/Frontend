@@ -1,5 +1,5 @@
 <template>
-  <div class="student">
+  <div class="home">
     <el-button type="plain" @click="logout">注销</el-button>
 
     <el-button type="primary" @click="dialogVisible = true">添加学生</el-button>
