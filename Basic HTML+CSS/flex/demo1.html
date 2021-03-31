@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            background-color: yellow;
+            width: 800px;
+            height: 300px;
+            /* flex-direction: column; */
+            /* justify-content: center; */
+            /* justify-content: space-between; */
+            /* justify-content: space-around; */
+            /* align-items: flex-start; */
+            /* align-items: flex-end; */
+            /* align-items: center; */
+        }
+        .item{
+            /* width: 100px; */
+            /* height: 100px; */
+            background-color: #f00;
+            border: 2px solid #00f;
+            /* flex-grow: 1; */
+            flex: 1;
+        }
+        .item-special{
+            background-color: #f00;
+            border: 2px solid #00f;
+            /* flex-grow: 3; */
+            /* flex-shrink: 2; */
+            flex: 1;
+            /* align-self: flex-start; */
+            /* align-self: flex-end; */
+            align-self: center;
+            /* align-self: baseline; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+        <div class="item-special">item-special</div>
+        <div class="item">item4</div>
+        <div class="item">item5</div>
+    </div>
+</body>
+</html>

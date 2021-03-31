@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            margin: 200px auto;
+            border: 2px solid red;
+            /* 设置旋转原点 */
+            transform-origin: 0 0;
+            /* 叠加多个过渡效果 */
+            transition: transform 1s,width 1s,height 1s;
+        }
+        .box1:hover{
+            transform: rotate(360deg);
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+
+    </div>
+</body>
+</html>

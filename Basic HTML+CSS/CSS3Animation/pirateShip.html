@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-image: url(./images/bg.png);
+        }
+        @keyframes wave {
+            50%{
+                transform: translate(-50px);
+            }
+        }
+        @keyframes ship {
+            50%{
+                transform: rotate(15deg);
+            }
+        }
+        @keyframes fish{
+            25%{
+                bottom: 33%;
+                left: 30%;
+                transform: rotate(-30deg);
+            }
+            50%{
+                bottom: 0%;
+                left: 50%;
+                transform: rotate(25deg);
+            }
+            75%{
+                bottom: 33%;
+                left: 80%;
+                transform: rotate(-30deg);
+            }
+            100%{
+                bottom: 0%;
+                left: 100%;
+                transform: rotate(25deg);
+            }
+        }
+        .sea{
+            position: fixed;
+            bottom: 0px;
+        }
+        .wave1{
+            position: absolute;
+            bottom: 90px;
+            height: 80px;
+            animation: wave 6s infinite;
+        }
+        .wave2{
+            position: absolute;
+            bottom: 45px;
+            height: 80px;
+            animation: wave 4s infinite;
+        }
+        .wave3{
+            position: absolute;
+            bottom: 0px;
+            height: 80px;
+            animation: wave 3s infinite;
+        }
+
+        .ship{
+            position: fixed;
+            bottom: 10%;
+            left: 10%;
+            animation: ship 5s infinite;
+        }
+        .fish{
+            position: fixed;
+            bottom: 0%;
+            left: 0%;
+            animation: fish 6s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sea">
+            <img src="./images/fish.png" alt="" class="fish">
+            <img src="./images/ship.png" alt="" class="ship">
+            <!-- 上面的图片会覆盖下面的,最上面的wave1要最高，不然会被覆盖  -->
+            <img src="./images/wave1.png" alt="" class="wave1">
+            <img src="./images/wave2.png" alt="" class="wave2">
+            <img src="./images/wave3.png" alt="" class="wave3">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 100px;
+        }
+        a{
+            width: 200px;
+            height: 100px;
+            border: 2px solid red;
+        }
+        .block{
+            width: 200px;
+            height: 100px;
+            border: 2px solid red;
+            /* 将元素转换为块元素 */
+            display: block;
+        }
+        span{
+            /* 隐藏元素 */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 块元素:可以设置宽度和高度，独立成行 -->
+    <h1>helloh1</h1>
+    <h2>helloh2</h2>
+    <h3>helloh3</h3>
+    <h4>helloh4</h4>
+    <h5>helloh5</h5>
+    <h6>helloh6</h6>
+    <p>hellop</p>
+    <div>
+        <ul>
+            <li>helloli1</li>
+            <li>helloli2</li>
+            <li>helloli3</li>
+        </ul>
+    </div>
+
+    <!-- 行内元素(内联元素、行级元素)：不可以设置宽度和高度，不独立成行 -->
+    <a href="">click <span>here</span> </a>
+    <a class="block" href="">click here </a>
+
+    <!-- 行内块元素：可以设置宽度和高度，不独立成行 -->
+    <img src="images/3.png" alt="">
+    <img src="images/3.png" alt="">
+    <img src="images/3.png" alt="">
+    <input type="text">
+    <button>click</button>
+</body>
+</html>

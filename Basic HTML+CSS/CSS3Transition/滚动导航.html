@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .menu{
+            margin-top: 100px;
+        }
+        .menu>li{
+            float: left;
+            list-style: none;
+            width: 80px;
+            height: 30px;
+            background-color: #eee;
+            /* 设置overflow: hidden;就会隐藏溢出元素 */
+            overflow: hidden;
+        }
+        .show{
+            width: 80px;
+            height: 30px;
+            background-color: red;
+            text-align: center;
+            line-height: 30px;
+            transition: margin 0.5s;
+        }
+        .click{
+            width: 80px;
+            height: 30px;
+            background-color: yellow;
+            text-align: center;
+            line-height: 30px;
+        }
+        .menu>li:hover >.show{
+            margin-top: -30px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">
+        <li>
+            <p class="show">show</p>
+            <p class="click">click</p>
+        </li>
+        <li>
+            <p class="show">show</p>
+            <p class="click">click</p>
+        </li>
+        <li>
+            <p class="show">show</p>
+            <p class="click">click</p>
+        </li>
+    </ul>
+</body>
+</html>

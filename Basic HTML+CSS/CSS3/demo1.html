@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+            /* 圆角 */
+            border-radius: 40px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+            /* 阴影 */
+            box-shadow: 10px 20px 50px blue;
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+            /* 形变,写多个则下面的会覆盖上面的 */
+            /* transform: rotate(30deg);
+            transform: scale(0.5);
+            transform: translate(50px,100px); */
+            /* 叠加形变 */
+            transform: rotate(30deg) scale(0.5) translate(50px,50px);
+        }
+        .box3:hover{
+            transform: scale(0.5) translate(50px,50px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <h1>hello</h1>
+    </div>
+    <div class="box2">
+        <h1>hello</h1>
+    </div>
+    <div class="box3">
+        <h1>hello</h1>
+    </div>
+</body>
+</html>

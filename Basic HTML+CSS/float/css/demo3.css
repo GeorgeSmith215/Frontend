@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.list .pic img{
+    width: 200px;
+    height: 150px;
+}
+.pic{
+    width: 200px;
+    float: left;
+}
+.title{
+    width: 300px;
+    float: left;
+}
+.clear::before,.clear::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.title a{
+    display: block;
+    width: 80px;
+    height: 50px;
+    background-color:aquamarine;
+    color: white;
+    text-decoration: none;
+    /* 行高设置为元素高度就能实现垂直居中 */
+    line-height: 50px;
+    /* 水平居中 */
+    text-align: center;
+    border-radius: 15%;
+}

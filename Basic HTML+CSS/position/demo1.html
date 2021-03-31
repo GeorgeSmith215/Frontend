@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height:100px;
+            background-color: red;
+            border: 2px solid white;
+        }
+        /* 绝对定位：脱离文档流、默认参照物为浏览器视窗的左上角。 */
+        .absolutePos{
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        /* 相对定位：不脱离文档流。默认参照物为此元素原位置。 */
+        .relativePos{
+            position: relative;
+            top: -50px;
+            left: 50px;
+            /* z-index数值大则在前方显示。 */
+            z-index: 2;
+        }
+        /* 固定定位：脱离文档流。默认参照物为浏览器当前视窗左上角位置。 */
+        .fixedPos{
+            position: fixed;
+            top: 150px;
+            left: 150px;
+        }
+        /* 滚动条下拉后fixed定位元素位置不变 */
+        body{
+            height: 5000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box absolutePos">2</div>
+    <div class="box">3</div>
+    <div class="box relativePos">4</div>
+    <div class="box fixedPos">5</div>
+</body>
+</html>

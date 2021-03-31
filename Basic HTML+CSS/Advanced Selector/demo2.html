@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 100px;
+            width: 100px;
+            border: red solid 2px;
+        }
+        .box:hover{
+            background-color: red;
+        }
+
+        /* css2:伪类选择器和伪元素选择器都是一个冒号 */
+        /* css3：伪元素是::伪类是一个: */
+        .line::before,.line::after{
+            content: "-----";
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <h1 class="line">hello</h1>
+    <h2 class="line">helll</h2>
+    <p class="line">hello</p>
+</body>
+</html>

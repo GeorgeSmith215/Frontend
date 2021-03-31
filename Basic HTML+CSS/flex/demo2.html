@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 如果需要将一个元素设置成占浏览器的100%显示的话，需要将其所有的父级全设置为100% */
+        body,html{
+            height:100%
+        }
+        .container{
+            background-color: #ff0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            /* 容器内所有元素水平居中 */
+            /* align-items: center; */
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            /* 容器内单个元素水平居中 */
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+</html>

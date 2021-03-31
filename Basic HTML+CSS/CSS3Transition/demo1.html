@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+            margin: 50px auto;
+            transition-property:transform;
+            transition-duration: 1s;
+        }
+        .box1:hover{
+            transform:rotate(360deg);
+        }
+        /* ease：开始和结束慢，中间快，默认值。
+            linear：匀速。
+            ease-in:开始慢。
+            ease-out：结束慢。
+            ease-in-out:和ease类似，但比ease幅度小。 */
+        .box2{
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+            margin: 50px auto;
+            transition: transform 1s linear;
+        }
+        .box2:hover{
+            transform:rotate(360deg);
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+            margin: 50px auto;
+            transition: transform 1s ease-in;
+        }
+        .box3:hover{
+            transform:rotate(360deg);
+        }
+        .box4{
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+            margin: 50px auto;
+            transition: transform 1s ease-out;
+        }
+        .box4:hover{
+            transform:rotate(360deg);
+        }
+        .box5{
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+            margin: 50px auto;
+            transition: transform 1s ease-in-out;
+        }
+        .box5:hover{
+            transform:rotate(360deg);
+        }
+        /* 延迟1s */
+        .box6{
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+            margin: 50px auto;
+            transition: transform 1s ease-in-out 1s;
+        }
+        .box6:hover{
+            transform:rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <h1>ease</h1>
+    </div>
+    <div class="box2">
+        <h1>linear</h1>
+    </div>
+    <div class="box3">
+        <h1>ease-in</h1>
+    </div>
+    <div class="box4">
+        <h1>ease-out</h1>
+    </div>
+    <div class="box5">
+        <h1>ease-in-out</h1>
+    </div>
+    <div class="box6">
+        <h1>delay</h1>
+    </div>
+</body>
+</html>

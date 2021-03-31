@@ -1,0 +1,121 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: #f6f6f6;
+}
+.header{
+    height: 60px;
+    width: 1920px;
+    max-width: 100%;
+    min-width: 1260px;
+    width: auto;
+    background-color: white;
+}
+.header .header_content{
+    width: 1260px;
+    margin: 0 auto;
+    height: 100%;
+}
+.header .header_content .logo{
+    margin-top: 16px;
+    float: left;
+}
+.header .header_content .nav li{
+    list-style: none;
+    float: left;
+    width: 114px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    box-sizing:border-box;
+}
+.header .header_content .nav li a{
+    color: #000;
+    text-decoration: none;
+}
+.header .header_content .nav li.active{
+    border-bottom: 2px solid #0084ff;
+}
+.header .header_content .nav li:hover{
+    border-bottom: 2px solid #0084ff;
+}
+.header .header_content .searchLogin{
+    float: right;
+    position: relative;
+}
+.header .header_content .searchLogin .search{
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+}
+.header .header_content .searchLogin .login{
+    height: 60px;
+    width: 130px;
+    background-color: #0084ff;
+    color: white;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.header .header_content .searchLogin .searchImg{
+    position: absolute;
+    right: 150px;
+    bottom: 15px;
+}
+
+.container{
+    width: 1260px;
+    margin: 0 auto;
+    text-align: center;
+}
+.container .content{
+    width: 955px;
+    float: left;
+}
+.container .content .title{
+    width: 955px;
+    height: 50px;
+    margin: 16px 0;
+    background-color: white;
+    line-height: 50px;
+}
+.container .content .title h2{
+    float: left;
+}
+.container .content .title a{
+    float: right;
+    text-decoration: none;
+}
+.container .slider{
+    width: 290px;
+    float: right;
+    margin-top: 15px;
+}
+.container .slider .slide_content{
+    background-color: white;
+    text-align: initial;
+}
+.container .slider .slide_info{
+    text-align: initial;
+}
+.container .content .list li{
+    height: 200px;
+    background-color: white;
+    margin: 5px 0;
+    list-style: none;
+}
+.container .content .list .img img{
+    position: relative;
+    top: 25px;
+    float: left;
+}
+.container .content .list .describe{
+    float: left;
+}
+
+.clear::before,.clear::after{
+    content: "";
+    display: block;
+    clear: both;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* id权重高 */
+        /* #txt{
+            color: blue;
+        } */
+
+        .title2{
+            color: blue;
+        }
+        .title{
+            color: red;
+        }
+        /* 10+100=110 */
+        .box h1{
+            color: red;
+        }
+        /* 100+11=101  !important设置最高权重*/
+        #box2 h1{
+            color: blue !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box2">
+        <h1 class="title title2" id="txt">hello world</h1>
+    </div>
+</body>
+</html>

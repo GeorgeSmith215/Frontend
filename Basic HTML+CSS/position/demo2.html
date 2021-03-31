@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 父级设置为相对/绝对/固定定位元素，子级的绝对定位元素会以父级为参照物 */
+        /* 父级元素一般设置为相对定位来供子级定位。 */
+        .pic-box{
+            width: 128px;
+            /* 水平居中 */
+            margin: 0 auto;
+            position: relative;
+            /* position: absolute; */
+            /* position: fixed; */
+            left: 20px;
+            top: 20px;
+        }
+        .list{
+            position:absolute;
+            top: 10px; 
+            left: 10px;
+        }
+        .backTop{
+            position: fixed;
+            bottom: 100px;
+            right: 100px;
+        }
+        body{
+            height: 5000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="pic-box">
+        <img src="./images/1.png" alt="">
+        <ul class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <div class="backTop"><button><a href="#">back to top</a></button></div>
+</body>
+</html>

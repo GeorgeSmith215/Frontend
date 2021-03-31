@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sports1{
+            border: 2px solid red;
+            height: 50px;
+            margin-bottom: 100px;
+            overflow: visible;
+        }
+        .sports2{
+            border: 2px solid red;
+            height: 50px;
+            margin-bottom: 100px;
+            overflow: hidden;
+        }
+        .sports3{
+            border: 2px solid red;
+            height: 50px;
+            margin-bottom: 100px;
+            overflow: auto;
+        }
+        .sports4{
+            border: 2px solid red;
+            height: 50px;
+            margin-bottom: 100px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <h1>overflow</h1>
+    <!-- visible	默认值。内容不会被修剪，会呈现在元素框之外。 -->
+    <div class="sports1">
+        visible(default)
+        <ul>
+            <li>basketball</li>
+            <li>football</li>
+            <li>volleyball</li>
+        </ul>
+    </div>
+    <!-- hidden	内容会被修剪，并且其余内容是不可见的。 -->
+    <div class="sports2">
+        hidden
+        <ul>
+            <li>basketball</li>
+            <li>football</li>
+            <li>volleyball</li>
+        </ul>
+    </div>
+    <!-- auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。 -->
+    <div class="sports3">
+        auto
+        <ul>
+            <li>basketball</li>
+            <li>football</li>
+            <li>volleyball</li>
+        </ul>
+    </div>
+    <!-- scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。 -->
+    <div class="sports4">
+        scroll
+        <ul>
+            <li>basketball</li>
+            <li>football</li>
+            <li>volleyball</li>
+        </ul>
+    </div>
+</body>
+</html>
