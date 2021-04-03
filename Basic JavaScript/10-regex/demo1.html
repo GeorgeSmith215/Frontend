@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 正则表达式
+        // 在JS中创建正则表达式对象
+        var reg = new RegExp("123");
+        // 简写
+        var reg = /123/;
+        // 上面两种创建方式等价，推荐用简写方式
+        // 需要匹配的字符串(通常为用户输入内容)
+        var str = "123";
+        var result = reg.test(str);
+        console.log(result);
+        // 只能匹配1位小写字母：
+        // []:表示指定范围,^:表示指定开头,$：指定结尾。
+        // 开头结尾都只有一位小写字母(总共只有1位小写字母)
+        var reg = /^[a-z]$/;
+        // test返回值是布尔值，exec的返回值是匹配的内容
+        var result = reg.exec(str);
+        console.log(result);
+        // {}：匹配位数
+        var str ="abc123";
+        // 匹配5-9位包括字母(不分大小写)，数字，下划线的字符串
+        var reg = /^[a-zA-z0-9_]{5,9}$/;
+        // [a-zA-z1-9_]也相当于\w
+        var regw = /^\w{5,9}$/;
+        var result = reg.exec(str);
+        var resultw = regw.exec(str);
+        console.log(result);
+        console.log(resultw);
+        // +：匹配1位或多位，同{1,}
+        // \d：匹配数字，同[0-9]
+        var str ="123";
+        var reg = /\d+/;
+        var result= reg.test(str);
+        console.log(result);
+        // ?：匹配0位或1位，同{0,1}
+        // \s：匹配空格或换行
+        var reg = /^\s?$/;
+        var str = " ";
+        var result= reg.test(str);
+        console.log(result);
+        var str = "   ";
+        var result= reg.test(str);
+        console.log(result);
+        // .：匹配所有
+        var reg = /^.+$/;
+        var str = "";
+        var result= reg.test(str);
+        console.log(result);
+        var str = "1aA!";
+        var result= reg.test(str);
+        console.log(result);
+        // \：转义，若匹配的字符串里有正则表达式语法相关字符，需要进行转义
+        var str = "1+";
+        // 不进行转义会匹配失败（字符串中的+没有匹配）
+        var reg = /^1+$/;
+        var result= reg.test(str);
+        console.log(result);
+        // 进行转义后匹配成功
+        var reg = /^1\+$/;
+        var result= reg.test(str);
+        console.log(result);
+        // *：匹配0位或多位，同{0,}
+        var reg = /^zo*$/;
+        // 匹配多个o
+        var str = "zoo";
+        var result= reg.test(str);
+        console.log(result);
+        // 匹配零个o
+        var str = "z";
+        var result= reg.test(str);
+        console.log(result);
+
+        // 简单匹配邮箱格式，注意邮箱的"."需要转义。
+        var reg = /^\w+@\w+\.com$/;
+        var str = "121233@126.com";
+        var result= reg.test(str);
+        console.log(result);
+
+        // 字符串替换
+        var str = "123abc456def";
+        // 用字符串的replace方法把a替换成9
+        var result = str.replace("a",9);
+        console.log(result);
+        // 修饰符g：执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）
+        var reg = /[a-zA-Z]/g;
+        // 去掉字符串里的所有字母
+        var result = str.replace(reg,"");
+        console.log(result);
+
+        // 截取字符串
+        var str = "2021-01-01";
+        // 可以把要截取的内容用小括号括起来
+        var reg = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
+        // ()分组：reg.exec返回一个数组，数组的第一个元素代表匹配的所有内容，
+        // 若使用了小括号分组则还会输出匹配分组的内容。
+        // index表示从哪一个位置开始匹配，input为字符串输入的内容
+        var result = reg.exec(str);
+        console.log(result);
+    </script>
+</body>
+</html>

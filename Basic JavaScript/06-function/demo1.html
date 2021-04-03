@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // // 函数声明,声明的时候不执行语句块
+        // function foo(){
+        //     console.log("hello world!");
+        // }
+        // // 调用函数时执行,声明之后可以反复调用，提升代码的复用性
+        // foo();
+        // foo();
+
+        // // 传递一个参数
+        // function foo1(x){
+        //     var result = 3*x+4;
+        //     console.log(result);
+        // }
+        // foo1(4);
+        // // 传递多个参数
+        // function foo2(x,y){
+        //     var result = 3*x+4*y;
+        //     console.log(result);
+        // }
+        // foo2(4,5);
+
+        // // 函数的返回值
+        // function foo3(x,y){
+        //     var result = 3*x+4*y;
+        //     return result;
+        // }
+        // console.log(foo3(4,5));
+        // // 输出四则运算的结果
+        // function computed(n,m,op){
+        //     switch(op){
+        //         case "+":return n+m;break;
+        //         case "-":return n-m;break;
+        //         case "*":return n*m;break;
+        //         case "/":return n/m;break;
+        //     }
+        // }
+        // // 可以将返回值赋值给一个变量
+        // var result = computed(5,5,"*");
+        // console.log(result);
+        // 验证用户，如果用户名为“admin”，密码为“123456”则提示登录成功，否则登录失败。
+        function checkLogin(username,password){
+            if(username === "admin" && password === "123456"){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        var result = checkLogin("admin","123456");
+        // checkLogin的返回值已经是Boolean值了，就不需要判断result===true了
+        if(result){
+            console.log("登录成功");
+        }else{
+            console.log("登录失败");
+        }
+
+        // 用函数完成1-n之间的正整数之和,n为参数。
+        function sum(n){
+            var sum = 0;
+            for(var i=1;i<=n;++i){
+                sum += i;
+            }
+            return sum;
+        }
+        console.log(sum(100));
+
+        // 用函数完成输出1-n之间的所有奇数，n为参数。
+        function odd(n){
+            for(var i=1;i<=n;i++){
+                // if(i%2===1){
+                //     console.log(i);
+                // }
+                switch(i%2){
+                    case 1:console.log(i);
+                }
+            }
+        }
+        odd(100);
+    </script>
+</body>
+</html>

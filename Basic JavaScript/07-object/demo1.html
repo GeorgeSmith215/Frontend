@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var cat = {
+            name:"mm",
+            age:2
+        }
+        console.log(cat.name); //“.”的意思相当于“的”。cat.name相当于cat的name
+        // 还可以用：对象["属性名"] 的方式获取属性，但一般用上面方式居多
+        console.log(cat["name"]);
+
+        // 有时候需要创建一个对象，但没有相关信息（不知道有哪些属性名，属性值），
+        // 初始化时可以赋值为null，表示该变量以后会是一个对象，但现在没有值
+        var student = null;  //null:什么都没有(空)
+
+        // 变量定义后未赋值,值为undefined。（不要给变量赋值undefined）
+        var v;
+        console.log(v);
+        // 尽量不要让一个变量值为undefine，
+        // 如果是变量是字符串可以设置值为空字符串"",如果是数字可以设置为0，如果是对象可以设置"null"
+        var str = "";
+        var num = 0;
+        var student = null;
+
+        // 属性的值是一个函数,则称为方法
+        var cat = {
+            name:"mm",
+            age:2,
+            // 这个函数是一个匿名函数，用function声明但没有写函数名
+            sayName:function(){
+                // this是一个“指针”，在方法中可以指向调用方法的对象，在这里即为cat
+                console.log("我是"+ this.name);
+            },
+            // 方法也能传递参数
+            eat:function(food){
+                console.log(this.name + "吃" + food);
+            },
+            // 猫还会算数哦
+            computed:function(n,m){
+                return n+m;
+            }
+        }
+        // 调用方法
+        cat.sayName();
+        cat.eat("鱼");
+        // 让猫来计算1+2
+        var result = cat.computed(1,2);
+        console.log(result);
+        // 给mm重新取一个名字
+        cat.name = "小黑";
+        cat.sayName();
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // // 使用let代替var
+        // // let有块级作用域
+        // {
+        //     var str = "hello world";
+        // }
+        // // 输出hello world
+        // console.log(str);
+        // {
+        //     let str = "hello world";
+        // }
+        // // 报错
+        // console.log(str);
+
+        // // let不允许变量提升
+        // // 用var声明的变量有一个特性：变量声明提升，
+        // // 在整个的script标签下任何位置都可以访问str，但在赋值前访问是undefined
+        // console.log(str);
+        // var str = "hello world";
+        // // 但let就不具备变量提升，会直接报错
+        // console.log(strLet);
+        // let strLet = "hello world";
+
+        // // let不允许重复声明
+        // var str = "hello";
+        // var str = "world";
+        // // 可以输出world
+        // console.log*(str);
+        // let str = "hello";
+        // // 报错
+        // let str = "world";
+        // console.log*(str);
+
+        // // 常量
+        // // const定义常量
+        // const PI = 3.14;
+        // // 定义之后不可以修改,修改会报错
+        // // PI = 3;
+        // // 不变的值用常量声明，如函数表达式
+        // const foo = function(){
+        //     console.log("hello world");
+        // }
+        // foo();
+        // // 对象声明可以用常量
+        // function getObject(){
+        //     return {name:"xiaoming"};
+        // }
+        // const xm = getObject();
+        // console.log(xm.name);
+        // // const变量指向的那个内存地址不得改动，不可变的只是这个地址，
+        // // 即不能把foo指向另一个地址，但对象的属性是可变的
+        // xm.name = "xiaohong";
+        // console.log(xm.name);
+        // // 引入外部模块使用常量(以后用到),
+        // // 如在Node中通过require获取一个外部模块，然后赋值给常量
+        // // const express = require("express");
+
+        // // 模板字符串(1键左边)
+        // // 支持换行(普通字符串不支持换行)
+        // let str1 = `hello 
+        // world`;
+        // console.log(str1);
+        // // 支持嵌入变量(字符串连接)
+        // let year = "2021";
+        // let month = "01";
+        // let date = "01";
+        // // 以前写法
+        // let result = year + "年" + month+ "月" + date + "日";
+        // // 模板字符串写法
+        // let resultm = `${year}年${month}月${date}日`
+        // console.log(result);
+        // console.log(resultm);
+
+        // 解构赋值
+        // 数组的解构赋值
+        // 可以用解构赋值给多个变量赋值,下面语句相当于let n=10,m=20;
+        let [n,m] = [10,20];
+        console.log(n);
+        console.log(m);
+        // 用结构赋值来交换数据
+        [m,n] = [n,m];
+        console.log(n);
+        console.log(m);
+        // 以前交换数据写法
+        let temp = n;
+        n = m;
+        m = temp;
+        console.log(n);
+        console.log(m);
+
+        // 对象的解构赋值,和数组的解构赋值差不多,
+        // 下面语句相当于let name = "xiaoming",age = 10;
+        let {name,age} = {name:"xiaoming",age:10};
+        console.log(name);
+        console.log(age);
+        // name和age是通过属性名(字母)对应的，交换name和age的位置不会改变值
+        let {aget,namet} = {namet:"xiaoming",aget:10};
+        console.log(namet);
+        console.log(aget);
+
+        // 通过解构赋值传递参数,
+        // 如果只关注对象的某些属性可以用解构赋值获得
+        let xm = {name:"xiaoming",age:10};
+        function getName( {name} ){
+            return name;
+        }
+        let result = getName(xm);
+        console.log(result);
+        // 以前写法
+        function getName(obj){
+            return obj.name;
+        }
+        result = getName(xm);
+        console.log(result);
+    </script>
+</body>
+</html>

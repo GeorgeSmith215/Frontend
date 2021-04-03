@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // // Math对象
+        // // 向下取整(向更小的数值取整)
+        // var number = 3.14;
+        // var result = Math.floor(number);
+        // console.log(result);
+        // var number = -3.14;
+        // var result = Math.floor(number);
+        // console.log(result);
+        // // 获取0-1的随机数
+        // var ramdom = Math.random();
+        // console.log(ramdom);
+        // // 绝对值
+        // var number = -3.14;
+        // var result = Math.abs(number);
+        // console.log(result);
+        // // 开平方
+        // var number = 9;
+        // var result = Math.sqrt(number);
+        // console.log(result);
+        // // 乘方
+        // var result = Math.pow(2,3);
+        // console.log(result);
+
+        // // 获取指定范围的随机数
+        // // 获取1-10(不含10)的整数随机数
+        // var result = Math.floor((Math.random()*10+1))
+        // console.log(result);
+        // // 自定义获取1-n的随机整数
+        // function randomInt(n){
+        //     var result = Math.floor((Math.random()*n+1));
+        //     return result;
+        // }
+        // // 随机抽取数组中的一个元素
+        // var list = ["小明","小红","小刚"];
+        // var index = randomInt(3)-1;
+        // console.log(list[index]);
+
+        // // Date对象
+        // // 创建Date对象没有类似list的简写
+        // // Date后不加参数的话获取的就是当前时间的日期对象。
+        // var d = new Date();
+        // console.log(d);
+        // // 可以通过参数来指定时间
+        // var d = new Date("2021-1-1 12:00:00");
+        // console.log(d);
+        // // 获取时间之后，可以通过日期对象的方法来获取当前时间的对应数值。
+        // var d = new Date();
+        // // 获取年
+        // var year = d.getFullYear();
+        // console.log(year);
+        // // 获取月，月是从0开始的，一月是0，十二月是11。
+        // var month = d.getMonth();
+        // console.log(month);
+        // // 获取日
+        // var date = d.getDate();
+        // console.log(date);
+        // // 获取星期
+        // var day = d.getDay();
+        // console.log(day);
+        // // 获取时
+        // var hours = d.getHours();
+        // console.log(hours);
+        // // 获取分
+        // var minutes = d.getMinutes();
+        // console.log(minutes);
+        // // 获取秒
+        // var seconds = d.getSeconds();
+        // console.log(seconds);
+        // // 拼接时间
+        // console.log(year+"年"+(month+1)+"月"+date+"日 "+hours+":"+minutes+":"+seconds);
+        // // 获取时间戳：即格林威治时间1970年01月01日00时00分00秒起至现在的总毫秒数
+        // console.log(d.getTime());
+
+        // 计时器方法setInterval,每隔ms数就调用一次function(){}
+        // 时钟：在控制台显示当前时间,每秒输出一次
+        setInterval(function(){
+            var d = new Date();
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+            console.log(hours+":"+minutes+":"+seconds);
+        },1000)
+    </script>
+</body>
+</html>

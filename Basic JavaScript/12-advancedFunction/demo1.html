@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 声明函数：一次声明，多次调用
+        // n,m为形参，参与函数的定义。
+        // 之后调用函数时传递的具体数值为实参。返回函数调用的结果
+        // function fun(n,m){
+        //     return n+m;
+        // }
+        // let result1 = fun(10,20);
+        // let result2 = fun(100,200);
+        // console.log(result1);
+        // console.log(result2);
+        // // 函数声明提升：函数即使是在调用之后(空间)声明，也能正常调用
+        // foo();
+        // function foo(){
+        //     console.log("hello world");
+        // }
+        // // 匿名函数：当想在某个地方用到函数，并且这个函数不需要多次调用，
+        // // 可以用匿名函数，因为匿名函数没有函数名，也没办法多次调用。
+        // // 匿名函数经常用来作为回调函数（将匿名函数作为参数传递给另外一个函数或方法）
+        // setInterval(function(){
+        //     console.log("hello");
+        // },1000);
+        // // 相当于
+        // function fun1(){
+        //     console.log("hello world");
+        // }
+        // setInterval(fun1,1000);
+
+        // // 函数表达式:把匿名函数赋值给一个变量或常量，那么这个变量或常量就是一个函数表达式
+        // const fun2 = function(n,m){
+        //     return n+m;
+        // }
+        // // 可以像函数调用一样调用函数表达式，
+        // // 且函数声明和函数表达式都可以实现一次声明多次调用。
+        // let result = fun2(10,20);
+        // console.log(result);
+        // result = fun2(100,200);
+        // console.log(result);
+        // // 函数声明和函数表达式差不多，但是函数表达式没有函数声明提升的特性
+        // // (函数表达式也属于变量或常量，不能在赋值前使用)
+        // // 报错
+        // result = fun3(100,200);
+        // console.log(result);
+        // const fun3 = function(n,m){
+        //     return n+m;
+        // }
+
+        // // 方法:方法就是一个函数，赋值给了某一对象的属性，调用时需要：对象名.方法名()
+        // const cat = {
+        //     name:"mm",
+        //     sayName:function(){
+        //         console.log(this.name);
+        //     }
+        // }
+        // cat.sayName();
+        // // ES2015中方法还可以简写，不需要写function
+        // const dog = {
+        //     name:"dd",
+        //     sayName(){
+        //         console.log(this.name);
+        //     }
+        // }
+        // dog.sayName();
+
+        // // 设置函数默认值
+        // function fun4(n,m){
+        //     console.log(n);//undefined
+        //     console.log(m);//undefined
+        //     return n+m;
+        // }
+        // let result4 = fun4();
+        // //输出NaN：Not a Number，因为调用的时候没有传入值，
+        // // 而定义未声明的变量值为undefined，undefined+undefined=NaN
+        // console.log(result4);
+        // console.log(undefined+undefined);
+        // // 我们当然不希望这样，所以ES2015加了默认参数的语法
+        // function fun5(n=10,m=20){
+        //     console.log(n);
+        //     console.log(m);
+        //     return n+m;
+        // }
+        // // 没有实参按默认值计算
+        // let result5 = fun5();
+        // console.log(result5);
+        // // 如果只传一个，按顺序传入,在这里传给n
+        // let result5t = fun5(100);
+        // console.log(result5t);
+
+        // // 立即执行函数：外层有两个(),第一个里是一个匿名函数，第二个为空(调用函数)
+        // // 可以通过这种方式来定义一个匿名函数，并且这个匿名函数定义完之后直接被调用
+        // // 且立即执行函数也不可以多次调用
+        // (function(){
+        //     console.log("hello horld");
+        // })();
+        // // 立即执行函数在以前常用来实现代码的封装
+        // (function(){
+        //     let a = 10;
+        //     let b = 20;
+        //     console.log(a+b);
+        // })();
+        // // 报错
+        // console.log(a);
+        // // 在函数外部是无法访问到a的，因为a是写在函数里的，有它自己的作用域(函数里)，
+        // // 函数里可以调用a，函数外面就不能调用a了，这样就实现了代码的封装。
+        // // 比如我们写了一个程序，程序里的变量只能我们访问，别人引用我们的文件时是不能访问的，
+        // // 这样就可以使用立即执行函数来封装我们的代码，函数执行完就完事儿了。
+        // // 但ES2015有了模块化的语法(之后介绍)，如果想封装我们的代码，直接写在模块里就好了，
+        // // 就不必要写立即执行函数来封装，这就导致现在立即执行函数已经不常用了。
+
+        // 作用域链：每一个函数都会创建一个新的作用域。
+        // 函数外部无法访问函数内的值。
+        // 函数内部的值可以访问函数外部的值。
+    </script>
+</body>
+</html>
