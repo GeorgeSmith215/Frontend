@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pic{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">hello world</h1>
+    <div>
+        <img class="pic" src="./images/1.png" alt="">
+    </div>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <script>
+        let h1 = document.querySelector("h1");
+        // 获取元素的id
+        console.log(h1.id);
+        // 点击按钮改变img的src属性
+        let img = document.querySelector("img");
+        // 把img对应的src属性中的文件保存在数组中
+        let imageSrcList = ["./images/1.png","./images/2.png","./images/3.png"]
+        let btns = document.querySelectorAll("button");
+        for(let i in btns){
+            // 给每一个按钮绑定click事件，点击对应按钮改变img对应的src属性
+            btns[i].onclick = function(){
+                // console.log(imageSrcList[i]);
+                img.src = imageSrcList[i];
+            }
+        }
+    </script>
+</body>
+</html>

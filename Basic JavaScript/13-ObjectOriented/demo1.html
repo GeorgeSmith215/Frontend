@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES5是没有类的概念的，通过构造函数来实现类。
+        // 构造函数的函数名，首字母大写
+        // 构造函数是用来创建对象用的。
+        function Dog(name,age){
+            // this指向用new创建出来的对象
+            // this.name即为对象的属性，可以为对象设置属性
+            // 通常情况下，构造函数的参数名和对象的属性名一样
+            this.name = name;
+            this.age = age;
+        }
+        // new 构造函数(参数列表); ：创建了一个对象，即狗类的实例
+        // 参数列表一般传递对象属性
+        var dog = new Dog("小白",2);
+        console.log(dog);
+
+        // 原型对象：通过原型对象，可以为构造函数生成的所有对象赋予新的方法。
+        // prototype属性，这个属性指向函数的原型对象
+        Dog.prototype.sayName = function(){
+            console.log(`我的名字是${this.name}`);
+        }
+        dog.sayName();
+        var bigDog = new Dog("大白",3);
+        bigDog.sayName();
+        // 通过prototype，可以为一个类或对象扩展方法，
+        // 可以扩展自己定义的构造函数，也可以扩展系统自带的构造函数
+        // 注意prototype是构造函数的属性而不是某一个对象的属性
+        var arr = [1,2,3];
+        console.log(arr.length);
+        // 给每一个数组的对象都添加sayHello方法
+        Array.prototype.sayHello = function(){
+            console.log(`我是一个数组，我的长度是：${this.length}`);
+        }
+        arr.sayHello();
+        var arr1 = new Array(1,2,3,4,5);
+        arr1.sayHello();
+
+        // 原型链：实现继承，了解即可，因为ES2015有更好的解决方案了
+        // 子类构造函数可以调用父类构造函数的所有属性和方法
+        function Animal(name){
+            this.name = name;
+        }
+        Animal.prototype.sayName = function(){
+            console.log(`我是${this.name}`);
+        }
+        Animal.prototype.sayHello = function(){
+            console.log(`hello!`);
+        }
+        var an = new Animal("小黑");
+        an.sayName();
+        function Cat(name){
+            this.name = name;
+        }
+        // 原型链实现继承
+        // Cat的原型对象直接赋值Animal的一个实例
+        Cat.prototype = new Animal();
+        var cat = new Cat("小花");
+        cat.sayName();
+        cat.sayHello();
+
+        // ES2015支持类的概念,用class关键字定义类
+        class DogClass{
+            // es2015也支持构造函数，但构造函数是写在类里的
+            constructor(name,age){
+                this.name = name;
+                this.age = age
+            }
+            // 可以在类里直接写方法
+            sayName(){
+                console.log(`我是${this.name}`);
+            }
+        }
+        let dogES2015 = new DogClass("小黄",3);
+        console.log(dogES2015);
+        dogES2015.sayName();
+        // es2015继承
+        class AnimalClass{
+            constructor(name){
+                this.name = name;
+            }
+            sayName(){
+                console.log(`我是${this.name}`);
+            };
+        }
+        // 用extends关键字来实现继承
+        class CatClass extends Animal{
+            // 可以在继承的类里再加自己定义的构造函数，
+            // 其中从父级继承的属性必须有，且需要用super关键字传父级属性，
+            // 新属性保持原方法
+            constructor(name,age){
+                super(name);
+                this.age = age;
+            }
+        }
+        let catES2015 = new CatClass("小虎",3);
+        catES2015.sayName();
+        console.log(catES2015.age);
+
+        // 扩展Date对象实现dateFormate方法，返回值是"XXXX年XX月XX日"
+        let date = new Date();
+        console.log(date);
+        Date.prototype.dateFormate = function dateFormate(){
+            let year = this.getFullYear();
+            // month是从0开始的，所以需要加1
+            let month = this.getMonth()+1;
+            let day = this.getDate();
+            return `${year}年${month}月${day}日`;
+        }
+        console.log(date.dateFormate());
+        let d = new Date("2021-01-01");
+        console.log(d.dateFormate());
+
+        // 定义一个Person类，让Student类和Teacher类继承Person，
+        // 为Person类添加getInformation方法，
+        // 使Student类和Teacher类都可以通过此方法获取个人信息。
+        class Person{
+            constructor(name){
+                this.name = name;
+            }
+            getInformation(){
+                console.log(`我是${this.name}`);
+            }
+        }
+        class Student extends Person{
+            constructor(name,marks){
+                super(name);
+                this.marks = marks;
+            }
+            // 继承的类中方法与父类相同会覆盖父类方法(重载)
+            getInformation(){
+                console.log(`我是${this.name},我的成绩是${this.marks}`);
+            }
+        }
+        class Teacher extends Person{
+            constructor(name,course){
+                super(name);
+                this.course = course;
+            }
+            getInformation(){
+                console.log(`我是${this.name},我的教的是${this.course}`);
+            }
+        }
+        let student = new Student("小明",80);
+        student.getInformation();
+        let teacher = new Teacher("小刚","体育");
+        teacher.getInformation();
+    </script>
+</body>
+</html>

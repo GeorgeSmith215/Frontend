@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         // 声明函数：一次声明，多次调用
@@ -109,16 +111,122 @@
         // })();
         // // 报错
         // console.log(a);
-        // // 在函数外部是无法访问到a的，因为a是写在函数里的，有它自己的作用域(函数里)，
+        // // 在函数外部是无法访问到a的，因为a是写在函数里的，有它自己的作用域(函数里,下段详细讲到)，
         // // 函数里可以调用a，函数外面就不能调用a了，这样就实现了代码的封装。
         // // 比如我们写了一个程序，程序里的变量只能我们访问，别人引用我们的文件时是不能访问的，
         // // 这样就可以使用立即执行函数来封装我们的代码，函数执行完就完事儿了。
         // // 但ES2015有了模块化的语法(之后介绍)，如果想封装我们的代码，直接写在模块里就好了，
         // // 就不必要写立即执行函数来封装，这就导致现在立即执行函数已经不常用了。
 
-        // 作用域链：每一个函数都会创建一个新的作用域。
-        // 函数外部无法访问函数内的值。
-        // 函数内部的值可以访问函数外部的值。
+        // // 作用域链：每一个函数都会创建一个新的作用域。
+        // // 函数外部无法访问函数内的值。
+        // // 函数内部的值可以访问函数外部的值。
+        // // 整体的script标签是全局环境，全局环境下有一个window对象下的作用域，
+        // // 下面有新的函数foo1就产生新的作用域,foo1里有foo2也产生新作用域，
+        // // 每一层函数都有新作用域，当调用函数时，里面函数可以访问外面函数作用域，
+        // // 但外面函数不能访问里面函数作用域，并且当我们输出变量时，若当前作用域下有值，
+        // // 就会在当前作用域找该变量，若没有，就会一层层向上找，直到报错(window下也找不到)
+        // let str = "hello"
+        // fu nction foo1(){
+        //     let str = "world";
+        //     let num = 10;
+        //     function foo2(){
+        //         console.log(str);
+        //         console.log(num);
+        //     }
+        //     foo2();
+        // }
+        // console.log(str);
+        // foo1();
+
+        // // 闭包：想在函数外部调用内部函数可通过闭包方式实现.
+        // // 利用闭包可以实现代码的封装，即希望暴露出来的功能可以通过返回值在外部获取，
+        // // 不希望暴露的变量等在外部就无法获取。
+        // // 闭包的特性：如果内部函数作为返回值赋值给了一个外部变量，
+        // // 当外部函数执行完成后里面的变量是不会被销毁的。
+        // // 即：内部函数未执行完，外部函数即使执行完成，其中的变量也不会被销毁
+        // function foo3(){
+        //     let n = 10;
+        //     let m = 20;
+        //     function foo4(){
+        //         return n + m;
+        //     }
+        //     // foo3返回foo4
+        //     return foo4;
+        // }
+        // // foo3运行结果是foo4，即f为foo4
+        // const f = foo3();
+        // const result = f();
+        // console.log(result);
+
+        // // 代码封装:外部函数可以通过module来调用add，但无法获取module里定义的a，b变量
+        // // 结合了立即执行函数和闭包，实现了代码的封装。是ES5的一个模块化的语法。
+        // // 但ES015提供了内置的模块化语法，这种方式现在已经不常用了
+        // const module = (function () {
+        //     let a = 10;
+        //     let b = 20;
+        //     function add() {
+        //         return a + b
+        //     }
+        //     return add;
+        // })()
+        // console.log(module(10,20));
+
+        // // 箭头函数
+        // // 原本函数表达式：
+        // const add1 = function (x) {
+        //     return x * x;
+        // }
+        // console.log(add1(2));
+        // // 箭头函数：
+        // const add2 = (x) => {
+        //     return x * x;
+        // }
+        // console.log(add2(2));
+        // // 小括号()内写形参列表
+        // const add3 = (x,y) => {
+        //     return x * y;
+        // }
+        // console.log(add3(2,2));
+        // // 如果只有一个参数可以简化：
+        // const add4 = x => {
+        //     return x * x;
+        // }
+        // console.log(add4(2));
+        // // 如果只有一条语句还可以简化：
+        // const add5 = x => x * x;
+        // console.log(add5(2));
+
+        // // 箭头函数中的this：
+        // const cat = {
+        //     name:"mm",
+        //     sayName(){
+        //         // setInterval其实是window对象的方法，即setInterval方法执行时，
+        //         // 里面的function其实是被window调用的，this指向的是window而不是cat
+        //         window.setInterval(function(){
+        //             console.log(this);
+        //         },1000);
+        //         // 以前可以这样修改
+        //         let self = this;
+        //         window.setInterval(function(){
+        //             console.log(self.name);
+        //         },1000);
+        //         // 现在可以用箭头函数更简单实现
+        //         window.setInterval(() => {
+        //             // 箭头函数和普通函数的this指向不同，
+        //             // 普通函数指向的是调用该函数的对象。
+        //             // 箭头函数：在哪里定义，this就指向谁
+        //             // (箭头函数没有 this，所以需要通过查找作用域链来确定 this 的值,
+        //             // this会向作用域外层查找 this 的值)。
+        //             // 像setInterval以及将函数作为参数传给另一个函数的时候，
+        //             // 通常用箭头函数的情况下会多一些，
+        //             // 平常自定义的函数声明以及函数表达式可以继续使用function
+        //             console.log(this.name);
+        //         },1000);
+        //     }
+        // }
+        // cat.sayName();
     </script>
 </body>
+
 </html>

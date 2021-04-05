@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 最外层是swiper，需要设置宽高为img的宽高，overflow设置为hidden */
+        .swiper{
+            width:500px;
+            height:500px;
+            overflow: hidden;
+            position: relative;
+        }
+        /* images-container需要设置宽为每张图片宽*图片数，用flex布局使img成一行排列 */
+        /* 加入transition使图片平移更平滑 */
+        .images-container{
+            width: 1500px;
+            display: flex;
+            transition: transform 0.5s;
+        }
+        .images-container img{
+            width: 500px;
+            height: 500px;
+        }
+        /* 按钮用绝对定位，以父级swiper为参照物，设置水平居中 */
+        .number-list{
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper">
+        <div class="images-container">
+            <img src="./images/1.png" alt="">
+            <img src="./images/2.png" alt="">
+            <img src="./images/3.png" alt="">
+        </div>
+        <div class="number-list">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+    </div>
+
+    <script>
+        let btnList = document.querySelectorAll(".number-list button");
+        let container = document.querySelector(".images-container");
+        for(let i in btnList){
+            btnList[i].onclick = function(){
+                // 点击按钮时让images-container平移：
+                // -每张图片宽(向左平移添负号)*第几张图片(0开始)，
+                // 用模板字符串来进行计算
+                container.style.transform = `translate(${-500*i}px)`;
+            }
+        }
+        // var count = 0;
+        // setInterval(function(){
+        //     container.style.transform = `translate(${-500*count}px)`;
+        //     count++;
+        //     if(count === 3){
+        //         count = 0;
+        //     }
+        // },1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title1">hello</h1>
+    <h1 id="title2">world</h1>
+    <button class="btn">btn</button>
+    <button class="btn">btn</button>
+    <button class="btn">btn</button>
+    <script>
+        // 通过id名来获取DOM节点，返回一个DOM节点
+        let title1 = document.getElementById("title1");
+        console.log(title1);
+        // 通过class名来获取对应的所有DOM节点，返回dom节点的集合
+        let btns = document.getElementsByClassName("btn");
+        // 输出的是HTMLCollection，一个类数组对象，可以当作像数组一样的集合
+        console.log(btns);
+        // 通过DOM节点的innerHTML属性可以用来获取、设置元素内的文本
+        console.log(title1.innerHTML);
+        title1.innerHTML = "你好";
+        // innerHTML是DOM节点的属性，对于DOM节点的集合则需要遍历
+        for(let i in btns){
+            btns[i].innerHTML = "test";
+        }
+        // document.querySlector()和document.querySlectorAll()的参数是选择器，
+        // 即它们的参数是CSS的选择器，返回选中的DOM节点
+        // 因它们更简单易学故推荐使用它们
+        let title2 = document.querySelector("#title2");
+        console.log(title2);
+        title2.innerHTML = "世界";
+        // querySelectorAll返回的NodeList是元素集合，并且是静态的，
+        // （其他接口返回的HTMLCollection和NodeList都是live的）
+        // NodeList原意是节点集合（即可以包含元素，也可以包含文本节点）
+        // HTMLCollection是元素集合
+        let btnsSelected = document.querySelectorAll(".btn");
+        console.log(btnsSelected);
+        for(let i in btnsSelected){
+            btnsSelected[i].innerHTML = "Selected";
+        }
+    </script>
+</body>
+</html>
