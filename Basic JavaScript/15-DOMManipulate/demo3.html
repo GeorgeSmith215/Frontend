@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        let box = document.querySelector(".box");
+        // 事件监听函数的形参可以获取事件对象（形参名任意，一般简写为e）
+        box.onclick = function(e){
+            console.log(e);
+            // 通过事件对象可以获取鼠标坐标
+            // 获取x坐标：e.clientX
+            // 获取y坐标:e.clientY
+            console.log(e.clientX);
+            console.log(e.clientY);
+        }
+    </script>
+</body>
+</html>

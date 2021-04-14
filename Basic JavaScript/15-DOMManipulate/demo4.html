@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .picture-list img{
+            width: 320px;
+            height: 320px;
+        }
+        .big-picture img{
+            width: 640px;
+            height: 640px;
+        }
+        /* 设置定位为absolute，然后把big-picture的坐标(top,left值)跟着鼠标一起变化 */
+        .big-picture{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>实现一个随鼠标移动显示大图的功能</h1>
+    <div class="picture-list">
+        <img src="./images/1.png" alt="">
+        <img src="./images/2.png" alt="">
+        <img src="./images/3.png" alt="">
+    </div>
+    <div class="big-picture"></div>
+
+    <script>
+        let imgList = document.querySelectorAll('.picture-list img');
+        let bigPicture = document.querySelector('.big-picture');
+        let pictureList = document.querySelector('.picture-list');
+        for(let i in imgList){
+            // 鼠标进入时添加大图
+            imgList[i].onmouseenter = function(){
+                // console.log(this.src);
+                bigPicture.innerHTML = `<img src="${this.src}">`
+            }
+            // 鼠标移出时去掉大图
+            imgList[i].onmouseleave = function(){
+                bigPicture.innerHTML = ``
+            }
+        }
+        // onmousemove是鼠标移动事件，事件监听元素中的鼠标移动时就会触发
+        pictureList.onmousemove = function(e){
+            // 让big-picture的坐标(top,left值)跟着鼠标一起变化
+            let x = e.clientX;
+            let y = e.clientY;
+            // 因为当大图出现时会挡住鼠标从而触发onmouseleave，
+            // 使大图消失出现图片"闪烁"效果,所以需要额外增加一些像素。
+            bigPicture.style.top = y + 10 + 'px';
+            bigPicture.style.left = x + 10 + 'px';
+        }
+    </script>
+</body>
+</html>

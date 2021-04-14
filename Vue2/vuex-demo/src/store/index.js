@@ -4,7 +4,10 @@ import Vuex from 'vuex';
 
 // 引入拆分的state
 import state from "./state";
+// 引入users子模块
 import users from './users/index'
+// 引入mutations_type
+import mutations_type from './mutations_type'
 
 Vue.use(Vuex);
 
@@ -34,6 +37,7 @@ export default new Vuex.Store({
             state.num -= payload ? payload : 1;
         }
     },
+    mutations_type,
     // actions专门用来处理异步，
     // 实际修改状态值的依然是mutations
     actions:{

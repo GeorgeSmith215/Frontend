@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button class="addInput">add input text</button>
+    <button class="banana">add banana</button>
+    <ul class="list">
+        <li>apple</li>
+        <li>apple</li>
+        <li>apple</li>
+    </ul>
+    <script>
+        // ES6规范中建议：静态字符一律使用单引号或反引号，不建议使用双引号
+        let btnBanana = document.querySelector('.banana');
+        let btnInput = document.querySelector('.addInput');
+        let ul = document.querySelector('ul');
+        let input = document.querySelector('input');
+        let list = document.querySelectorAll('.list li');
+        btnBanana.onclick = function(){
+            // 创建一个元素节点，刚创建时不在树状结构里，只存在内存中
+            let li = document.createElement('li');
+            console.log(li);
+            // 创建一个文本节点
+            let text = document.createTextNode('banana');
+            // 添加节点，若添加到树状结构的节点里则会在网页中显示
+            ul.appendChild(li);
+            li.appendChild(text);
+        }
+        btnInput.onclick = function(){
+            let li = document.createElement('li');
+            // 文本框的value属性就是文本框输入的内容
+            // console.log(input.value);
+            let inputValue = input.value;
+            let inputText = document.createTextNode(inputValue);
+            li.appendChild(inputText);
+            ul.appendChild(li);
+        }
+        // 给已存在的元素添加点击删除事件
+        // 后来添加的事件需要使用事件委托，之后介绍
+        for(let i in list){
+            list[i].onclick = function(){
+                // console.log(this);
+                // 删除节点
+                ul.removeChild(this);
+            }
+        }
+    </script>
+</body>
+</html>

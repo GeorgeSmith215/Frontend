@@ -18,7 +18,7 @@
         .images-container{
             width: 1500px;
             display: flex;
-            transition: transform 0.5s;
+            transition: transform 1s;
         }
         .images-container img{
             width: 500px;
@@ -48,6 +48,7 @@
     </div>
 
     <script>
+        var index = 0;
         let btnList = document.querySelectorAll(".number-list button");
         let container = document.querySelector(".images-container");
         for(let i in btnList){
@@ -56,16 +57,16 @@
                 // -每张图片宽(向左平移添负号)*第几张图片(0开始)，
                 // 用模板字符串来进行计算
                 container.style.transform = `translate(${-500*i}px)`;
+                index = i;
             }
         }
-        // var count = 0;
-        // setInterval(function(){
-        //     container.style.transform = `translate(${-500*count}px)`;
-        //     count++;
-        //     if(count === 3){
-        //         count = 0;
-        //     }
-        // },1000)
+        setInterval(function(){
+            container.style.transform = `translate(${-500*index}px)`;
+            index++;
+            if(index === 3){
+                index = 0;
+            }
+        },1000)
     </script>
 </body>
 </html>
