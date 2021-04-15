@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <h1>window.onscroll事件</h1>
+    <script>
+        // 防抖，每次屏幕滚动时都会触发window.onscroll事件，
+        // 但只有滚动停止后超过一定时间才触发业务逻辑代码
+        let timer = null;
+        window.onscroll = function(){
+            // 若设置计时器后依然在滚动，则清空计时器
+            if(timer !== null){
+                clearTimeout(timer);
+            }
+            // 只有滚动停止500ms后才执行业务逻辑代码
+            timer = setTimeout(()=>{
+                // 业务逻辑代码
+                console.log('hello world');
+                // 执行完业务逻辑后最好重新设置计时器为null
+                timer = null;
+            },500);
+        }
+
+        // 节流,通过flag标记使得每次滚动后经过一定时间才触发一次业务逻辑
+        let flag = true;
+        window.onscroll = function(){
+            if(flag){
+                setTimeout(()=>{
+                    console.log('hello world');
+                    flag = true;
+                },500);
+            }
+            flag = false;
+        }
+    </script>
+</body>
+</html>

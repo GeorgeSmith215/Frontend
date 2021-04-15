@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert('hello world');
+
+        // prompt的第一个参数是提示内容，第二个是默认文本内容
+        // 点确定时返回文本框中输入的字符串，点取消返回null
+        let str = prompt('请输入内容：','hello world');
+        console.log(str);
+
+        // confirm的参数是提示内容，返回布尔值，
+        // 点确定时为true，取消时为false
+        let result = confirm('是否确定？');
+        console.log(result);
+    </script>
+</body>
+</html>

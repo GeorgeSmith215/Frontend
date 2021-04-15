@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        let box = document.querySelector('.box');
+        // offsetTop可以获取元素的偏移量，还有offsetLeft等
+        console.log(box.offsetTop);
+        document.onkeydown = function(e){
+            // keyCode为按下的键对应的键码值
+            console.log(e.keyCode);
+            let code = e.keyCode;
+            switch(code){
+                case 37:box.style.left = box.offsetLeft - 5 + 'px';break;
+                case 38:box.style.top = box.offsetTop - 5 + 'px';break;
+                case 39:box.style.left = box.offsetLeft + 5 + 'px';break;
+                case 40:box.style.top = box.offsetTop + 5 + 'px';break;
+            }
+        }
+    </script>
+</body>
+</html>

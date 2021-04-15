@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+            display: none;
+        }
+        body{
+            height: 5000px;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello world</h1>
+    <button>↑</button>
+
+    <script>
+        let btn = document.querySelector('button');
+        btn.onclick = function(){
+            window.scrollTo(0,0);
+        }
+
+        let timer = null;
+        window.onscroll = function(){
+            if(timer !== null){
+                clearTimeout(timer);
+            }
+            // 只有滚动停止500ms后才执行业务逻辑代码
+            timer = setTimeout(()=>{
+                // 业务逻辑代码
+                console.log('hello world');
+                if(document.documentElement.scrollTop){
+                btn.style.display = 'block';
+                }else{
+                    btn.style.display = 'none';
+                }
+                // 执行完业务逻辑后最好重新设置计时器为null
+                timer = null;
+            },500); 
+        }
+
+        // 上面的方法使业务逻辑和防抖算法混在一起了，可以用闭包去耦
+        // 利用闭包，封装防抖算法
+        function debounce(fn){
+            let timer = null;
+            function eventFun(){
+                if(timer !==null){
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(()=>{
+                    // fn为处理业务逻辑的函数
+                    fn();
+                    timer = null;
+                },500);
+            }
+            return eventFun;
+        }
+        // 需要防抖的业务逻辑写在防抖函数的参数里，可以直接用箭头函数
+        window.onscroll = debounce(()=>{
+            console.log('hello world');
+            if(document.documentElement.scrollTop){
+            btn.style.display = 'block';
+            }else{
+                btn.style.display = 'none';
+            }
+        });
+
+        // 利用闭包封装节流
+        function throttle(fn){
+            let flag = true;
+            return function(){
+                if(flag){
+                    setTimeout(()=>{
+                        fn();
+                        flag = true;
+                    },500)
+                }
+                flag = false;
+            }
+        }
+
+        window.onscroll = throttle(()=>{
+            console.log('hello world');
+            if(document.documentElement.scrollTop){
+            btn.style.display = 'block';
+            }else{
+                btn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

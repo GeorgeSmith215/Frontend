@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num =100; //number
+        let str = 'hello'; //string
+        let und; //undefined
+        let nul = null; //object,注意:null用typeof检测为object
+        let bool = true; //boolean
+        console.log(typeof(num));
+        console.log(typeof(str));
+        console.log(typeof(und));
+        console.log(typeof(nul));
+        console.log(typeof(bool));
+
+        // 引用类型
+        let arr = [1,2,3];
+        let regExp = /123/;
+        let date = new Date();
+        // 引用类型用typeof检测都为object
+        console.log(typeof(arr));
+        console.log(typeof(regExp));
+        console.log(typeof(date));
+        // 引用类型用instanceof检测
+        console.log(arr instanceof Array);
+        console.log(arr instanceof RegExp);
+        console.log(arr instanceof Date);
+        console.log(date instanceof Date);
+        console.log(regExp instanceof RegExp);
+        // 注意:Array RegExp Date... extends Object;
+        // 所以任何引用类型 instanceof Object都为true
+        console.log(arr instanceof Object);
+        console.log(date instanceof Object);
+        console.log(regExp instanceof Object);
+        // null是原始类型,虽然typeof为object但instanceof Object为false
+        console.log(null instanceof Object);
+    </script>
+</body>
+</html>

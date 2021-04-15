@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>add</button>
+    <ul class="list">
+        <li>apple</li>
+        <li>banana</li>
+        <li>orange</li>
+    </ul>
+
+    <script>
+        let btn = document.querySelector('button');
+        let ul = document.querySelector('.list');
+        let inp = document.querySelector('input');
+        btn.onclick = function(){
+            let val = inp.value;
+            let li = document.createElement('li');
+            let txt = document.createTextNode(val);
+            li.appendChild(txt);
+            ul.appendChild(li);
+        }
+        // 根据事件冒泡，不管点击ul中的哪个li，都会触发ul事件
+        // 事件委托：让子级的事件委托给父级处理，但仍然可以拿到子级，
+        // 这样就可以实现不管是后加入还是新加入的子级元素都可以触发事件
+        ul.onclick = function(e){
+            // e.target指向的是事件捕获到最底层的元素，
+            // 故哪怕触发事件的是ul，也可以捕获到点击的li
+            ul.removeChild(e.target);
+        }
+    </script>
+</body>
+</html>

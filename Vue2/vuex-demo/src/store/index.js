@@ -27,8 +27,8 @@ export default new Vuex.Store({
     // 但是它不能使用异步方法(定时器，axios)
     mutations:{
         // 让num累加
-        // payload是一个形参，如果组件在commit时，
-        // 有传参数过来，就存在，否则就是undefined
+        // payload是一个形参(传递多个参数时可用对象形式传递),
+        // 如果组件在commit时，有传参数过来，就存在，否则就是undefined
         increase(state,payload){
             state.num += payload ? payload : 1;
         },

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 全局对象的方法可以直接使用，不需要写对象名
+        setTimeout(()=>{
+            console.log('hello world');
+        },1000);
+        // window对象即全局对象，定时器等都是全局对象的方法
+        window.setTimeout(()=>{
+            console.log('hello window');
+        },2000);
+
+        // 在script根标签下定义的函数也在window全局对象下
+        function fun(){
+            console.log(this);
+        }
+        fun();
+        window.fun();
+    </script>
+</body>
+</html>

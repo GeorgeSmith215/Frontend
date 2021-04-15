@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: #ff0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="show">show</button>
+    <div class="box">
+        <button class="hide">hide</button>
+    </div>
+
+    <script>
+        let show = document.querySelector('.show');
+        let box = document.querySelector('.box');
+        let hide = document.querySelector('.hide');
+        show.onclick = function(){
+            box.style.display = 'block';
+        }
+        // 会有事件冒泡，点hide也会使box变色，所以需要e.stopPropagation()
+        hide.onclick = function(e){
+            box.style.display = 'none';
+            e.stopPropagation();
+        }
+        box.onclick = function(){
+            this.style.backgroundColor = '#f00';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let target = Math.floor(Math.random()*100+1);
+        console.log('答案是:'+target);
+
+        // 递归函数：在函数体内调用自己
+        function guessNum(){
+            let num = prompt('请输入你猜的数字');
+            // 因为prompt返回的是字符串，所以需要用==先隐式转换再判断
+            // 或者把target变为字符串形式也可(tostring)
+            if(num == target){
+                alert('恭喜你猜对了！');
+            }else if(num > target){
+                alert('猜得太大了');
+                guessNum();
+            }else if(num < target){
+                alert('猜得太小了');
+                guessNum();
+            }
+        }
+        let isPlay = confirm('要玩猜数字游戏吗？');
+        if(isPlay){
+            guessNum();
+        }
+    </script>
+</body>
+</html>

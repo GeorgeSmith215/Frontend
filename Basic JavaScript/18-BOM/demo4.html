@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button class="addBtn">add</button>
+    <ul class="list">
+        <li>banana</li>
+        <li>apple</li>
+        <li>orange</li>
+    </ul>
+
+    <script>
+        let ul = document.querySelector('.list');
+        let addBtn = document.querySelector('.addBtn');
+        let inp = document.querySelector('input');
+        addBtn.onclick = function(){
+            let val = inp.value;
+            let li = document.createElement('li');
+            let text = document.createTextNode(val);
+            li.appendChild(text);
+            ul.appendChild(li)
+        }
+        ul.onclick = function(e){
+            let flag = confirm("确定要删除此元素？");
+            if(flag)
+                ul.removeChild(e.target);
+        }
+    </script>
+</body>
+</html>

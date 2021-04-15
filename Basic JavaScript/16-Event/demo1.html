@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+
+    <script>
+        let btn = document.querySelector('button');
+        // onEventType是通过赋值来添加事件的，
+        // 同一事件类型添加多个事件，会被覆盖
+        btn.onclick = function(){
+            console.log('hello');
+        }
+        btn.onclick = function(){
+            console.log('hello second');
+        }
+        // 而addEventListener添加新事件不会覆盖原事件
+        btn.addEventListener('click',function(){
+            console.log('hello world');
+        })
+        btn.addEventListener('click',function(){
+            console.log('hello javascript');
+        })
+    </script>
+</body>
+</html>

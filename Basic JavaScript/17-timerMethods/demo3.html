@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="start">start</button>
+    <button class="pause">pause</button>
+    <button class="stop">stop</button>
+    <h1 class="time"></h1>
+    
+    <script>
+        let startBtn = document.querySelector('.start');
+        let pauseBtn = document.querySelector('.pause');
+        let stopBtn = document.querySelector('.stop');
+        let time = document.querySelector('.time');
+        let seconds = 0;
+        let ms = 0;
+        time.innerHTML = `${seconds}:${ms}`;
+        // 为了防止触发事件多次导致计时器执行的次数变多，
+        // 可以在每次添加计时器事件时都先清空计时器。
+        let timer = null;
+        startBtn.onclick = function(){
+            clearInterval(timer);
+            timer = setInterval(()=>{
+                ++ms;
+                if(ms === 10){
+                    ++seconds;
+                    ms = 0;
+                }
+                time.innerHTML = `${seconds}:${ms}`;
+            },100);
+        }
+        pauseBtn.onclick = function(){
+            clearInterval(timer);
+        }
+        stopBtn.onclick = function(){
+            clearInterval(timer);
+            ms = 0;
+            seconds = 0;
+            time.innerHTML = `${seconds}:${ms}`;
+        }
+    </script>
+</body>
+</html>

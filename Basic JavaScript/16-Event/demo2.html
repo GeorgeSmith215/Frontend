@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .big{
+            width: 300px;
+            height: 300px;
+            background-color: #f00;
+        }
+        .medium{
+            width: 200px;
+            height: 200px;
+            background-color: #ff0;
+        }
+        .small{
+            width: 100px;
+            height: 100px;
+            background-color: #0ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="medium">
+            <div class="small"></div>
+        </div>
+    </div>
+
+    <script>
+        let big = document.querySelector('.big');
+        let medium = document.querySelector('.medium');
+        let small = document.querySelector('.small');
+        // addEventListener(eventType,fun,boolean);
+        // 默认boolean为false:冒泡阶段触发；true：捕获阶段触发
+        // 事件先捕获再冒泡（先外到内再内到外）
+        big.addEventListener('click',function(){
+            console.log("i'm big");
+        },true);
+        medium.addEventListener('click',function(){
+            console.log("i'm medium");
+        });
+        small.addEventListener('click',function(){
+            console.log("i'm small");
+        });
+    </script>
+</body>
+</html>
