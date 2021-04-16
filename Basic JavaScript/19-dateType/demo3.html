@@ -10,11 +10,13 @@
     <input type="text" class="name" placeholder="name">
     <input type="text" class="age" placeholder="age">
     <button>add</button>
+    <ul class="list"></ul>
 
     <script>
         let inputName = document.querySelector('.name');
         let inputAge = document.querySelector('.age');
         let btn = document.querySelector('button');
+        let ul = document.querySelector('.list');
         // 不管怎么赋值都在一个对象上操作,
         // 所以studentList里的元素指针都指向同一对象
         // let student = {};
@@ -38,6 +40,10 @@
             let student = new Student(inputName.value,inputAge.value);
             studentList.push(student);
             console.log(studentList);
+            let li = document.createElement('li');
+            let text = document.createTextNode(`姓名:${student.name},年龄:${student.age}`);
+            li.appendChild(text);
+            ul.appendChild(li);
         }
     </script>
 </body>
