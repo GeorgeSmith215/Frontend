@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ajax与服务器通信，就是异步获取数据的
+
+        // 数据
+        let target = 'hello world';
+        // 同步获取数据的方法
+        function getData(){
+            return target;
+        }
+        // 假如只能通过getData来获取数据(target)
+        let result = getData();
+        console.log(result);
+
+
+        // 异步获取数据的方法：
+        // 1.用回调函数获取数据
+        // 2.用promise对象获取数据
+        // 3.用async函数解决异步问题
+
+        // 注意：不能用return返回异步数据
+        function getDateAsync(){
+            setTimeout(()=>{
+                // return只能返回同步的数据，
+                // 而setTimeout是异步的,会经过延迟才能被执行，
+                // 但函数是瞬间执行的，执行完之后是没有返回值的，
+                // 所以返回undefined
+                return target;
+            },1000);
+        }
+        // 假如只能通过getData来获取数据(target)
+        let resultAsync = getDateAsync();
+        console.log(resultAsync);
+
+        // 回调函数：将函数作为一个参数传递给另一个函数。
+        function fun(fn){
+            fn();
+        }
+        fun(()=>{
+            console.log('这是一个回调函数');
+        })
+        // 1.用回调函数获取数据
+        function getDateAsync1(fun){
+            setTimeout(()=>{
+                fun(target);
+            },1000);
+        }
+        // data是箭头函数的形参，由fun的实参(target)传进来的
+        getDateAsync1((data)=>{
+            console.log(data);
+        });
+
+        // 2.用promise对象获取数据
+        // Promise是ES2015提供的一个内置对象，
+        // Promise对象就是专门用来解决异步问题的
+        let targetPromise = 'hello Promise';
+        // 所有过程都在new Promise中进行，
+        // Promise里面有个计时器，计时器里有resolve函数，
+        // 注意resolve是一个函数，调用resolve时把数据作为参数传递进去，
+        // 最后再把Promise赋值给p
+        let p = new Promise((resolve)=>{
+            setTimeout(()=>{
+                resolve(targetPromise);
+            },500)
+        })
+        // 用p来获取数据，data是形参，由resolve的实参(数据)传递的
+        // 此步骤与回调函数有点类似
+        p.then((data)=>{
+            console.log(data);
+        })
+
+        // Promise版本的getData
+        function getDataPromise(){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    resolve(targetPromise);
+                },1200);
+            });
+        }
+        p = getDataPromise();
+        p.then((data)=>{
+            console.log(data);
+        });
+
+        // 3.用async函数解决异步问题
+        // async函数内部可以使用await，await后加Promise对象，
+        // await返回的是Promise里的resolve内的数据，这样就不用写then
+        // 而可以直接用赋值的方式获取数据。
+        // 且async内的await有等待的过程，会等Promise获取数据后再执行下面代码
+        async function func(){
+            let data1 = await getDataPromise();
+            console.log(data1);
+            let data2 = await getDataPromise();
+            console.log(data2);
+            let data3 = await getDataPromise();
+            console.log(data3);
+        }
+        func();
+    </script>
+</body>
+</html>

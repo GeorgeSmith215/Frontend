@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 同步的程序，按顺序执行
+        // console.log('给1打电话');
+        // console.log('给2打电话');
+        // console.log('给3打电话');
+        // console.log('给4打电话');
+        // console.log('给5打电话');
+        // 异步的程序，可不按顺序执行，
+        // 每一段代码如果卡顿了不会影响下一段代码的执行
+        setTimeout(()=>{
+            console.log('给1发短信');
+        },1000);
+        setTimeout(()=>{
+            console.log('给2发短信');
+        },500);
+        setTimeout(()=>{
+            console.log('给3发短信');
+        },800);
+        setTimeout(()=>{
+            console.log('给4发短信');
+        },2000);
+        setTimeout(()=>{
+            console.log('给5发短信');
+        },200);
+    </script>
+</body>
+</html>
