@@ -40,6 +40,10 @@
         console.log(regExp instanceof Object);
         // null是原始类型,虽然typeof为object但instanceof Object为false
         console.log(null instanceof Object);
+        // null作为一个基本数据类型为什么会被typeof运算符识别为object类型呢？
+        // 这个bug是第一版Javascript留下来的，javascript中不同对象在底层都表示为二进制，
+        // 而javascript 中会把二进制前三位都为0的判断为object类型，
+        // 而null的二进制表示全都是0，自然前三位也是0，所以执行typeof时会返回 ‘object’。
     </script>
 </body>
 </html>

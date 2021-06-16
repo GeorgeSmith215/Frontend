@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value='btn1'>
+    <input type="button" value='btn2'>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // $通过选择器找到的对象，
+        // 不是DOM对象而是DOM对象对应的Jquery对象。
+        // 即：JQuery用$()将DOM对象包装成JQuery对象，
+        // 之后就可以使用JQuery的方法了。
+        $('input').click(function(){
+            console.log($('input'));
+            // DOM接口:dom.value
+            console.log(this.value);
+            // 事件中的this，指向DOM对象，所以需要使用$(this)做转换。
+            console.log($(this).val());
+        })
+    </script>
+</body>
+</html>
