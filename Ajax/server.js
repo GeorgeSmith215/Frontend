@@ -7,6 +7,17 @@ app.use(parser());
 // 模拟数据库数据
 let dataList = ["Banana","apple","orange"];
 
+app.use(async (ctx, next)=> {
+    ctx.set('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+    ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+    ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    if (ctx.method == 'OPTIONS') {
+      ctx.body = 200; 
+    } else {
+      await next();
+    }
+  });
+
 // get查看
 router.get("/fruits", ctx =>{
     ctx.body = dataList;
